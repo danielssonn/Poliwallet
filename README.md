@@ -1,0 +1,2 @@
+# SchellingPoint
+Schelling Point Hackathon
