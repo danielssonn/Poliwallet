@@ -1,2 +1,2 @@
-# SchellingPoint
-Schelling Point Hackathon
+# SchellingPoint2022
+Schelling Point Hackathon 
