@@ -1,0 +1,31 @@
+name: poliwallet
+description: a P2P NFT wallet
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 2.0.0+5
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  http: ^0.13.3
+  json_annotation: ^4.1.0
+  build_runner: ^1.0.0
+  intl: ^0.17.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  json_serializable: ^4.1.4
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/badges/
+    - assets/collections/
