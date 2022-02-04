@@ -3,6 +3,7 @@ docker run -d --name fluence -e RUST_LOG="info" -p 7777:7777 -p 9999:9999 -p 180
 - [] On docker startup, grab the Service ID and save it
 ![Service ID](https://github.com/danielssonn/SchellingPoint2022/blob/d99b748760f446e558754393b72e7d307456e510/assets/Local%20Fluence%20Peer%20ID.png)
 
+- [] Grab the p2p branch in the repo
 - [] Install fldist: 
   yarn global add @fluencelabs/fldist
 - []Run:
