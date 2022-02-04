@@ -1,0 +1,1 @@
+{"rustc":5208427512371702208,"features":"","target":0,"profile":0,"path":0,"deps":[[2421278278125917078,"build_script_build",false,16884589676744967251]],"local":[{"RerunIfChanged":{"output":"wasm32-wasi/release/build/log-847b17d38805bf77/output","paths":["build.rs"]}}],"rustflags":[],"metadata":0,"config":0,"compile_kind":0}

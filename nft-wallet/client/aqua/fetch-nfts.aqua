@@ -1,0 +1,25 @@
+import "@fluencelabs/aqua-lib/builtin.aqua"
+
+const NFT_MARKETPLACE_NODE_PEER_ID ?= "12D3KooWGxkRC917P9UwszKUDiWpmj7vuoqWJ1yzRAFFfGsofxHL"
+const NFT_MARKETPLACE_SERVICE_ID ?= "3cee2339-e8b3-4b26-b75c-14ee4d32976f"
+
+data NFTMarketPlace:
+  msg: string
+  reply: string
+
+-- The service runs on a Fluence node
+service NFTMarketPlace:
+    opensea_fetch() -> NFTMarketPlace
+
+-- The service runs inside browser
+service ClientPeer("ClientPeer"):
+    show(message: string) -> string
+
+func fetchNFTs(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
+    -- execute computation on a Peer in the network
+    on NFT_MARKETPLACE_NODE_PEER_ID:
+        NFTMarketPlace NFT_MARKETPLACE_SERVICE_ID
+        comp <- NFTMarketPlace.opensea_fetch()
+
+    -- send the result to the initiator
+    <- comp.reply
