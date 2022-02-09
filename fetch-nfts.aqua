@@ -1,25 +1,88 @@
 import "@fluencelabs/aqua-lib/builtin.aqua"
 
-const NFT_MARKETPLACE_NODE_PEER_ID ?= "12D3KooWGxkRC917P9UwszKUDiWpmj7vuoqWJ1yzRAFFfGsofxHL"
-const NFT_MARKETPLACE_SERVICE_ID ?= "3cee2339-e8b3-4b26-b75c-14ee4d32976f"
+const HELLO_WORLD_NODE_PEER_ID ?= "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi"
+const HELLO_WORLD_SERVICE_ID ?= "b6c9d9b4-e2b9-4c22-8a1f-dd25b25797d0"
 
-data NFTMarketPlace:
+data NFTEcho:
   msg: string
   reply: string
 
--- The service runs on a Fluence node
-service NFTMarketPlace:
-    opensea_fetch() -> NFTMarketPlace
+service MarketplaceService:
+  hello(from: string) -> NFTEcho
+  opensea_fetch() -> NFTEcho
+  opensea_fetch_len() -> NFTEcho
+  rarible_fetch() -> NFTEcho
+  rarible_fetch_len() -> NFTEcho
+
 
 -- The service runs inside browser
-service ClientPeer("ClientPeer"):
-    show(message: string) -> string
+service HelloPeer("HelloPeer"):
+    hello(message: string) -> string
 
-func fetchNFTs(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
+func sayHello(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
     -- execute computation on a Peer in the network
-    on NFT_MARKETPLACE_NODE_PEER_ID:
-        NFTMarketPlace NFT_MARKETPLACE_SERVICE_ID
-        comp <- NFTMarketPlace.opensea_fetch()
+    on HELLO_WORLD_NODE_PEER_ID:
+        MarketplaceService HELLO_WORLD_SERVICE_ID
+        comp <- MarketplaceService.hello("With love")
+
+    -- send the result to target browser in the background
+    on targetPeerId via targetRelayPeerId:
+        co HelloPeer.hello(%init_peer_id%)
 
     -- send the result to the initiator
     <- comp.reply
+
+
+func fetchOpenSea(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
+    -- execute computation on a Peer in the network
+    on HELLO_WORLD_NODE_PEER_ID:
+        MarketplaceService HELLO_WORLD_SERVICE_ID
+        comp <- MarketplaceService.opensea_fetch()
+
+    -- send the result to target browser in the background
+    on targetPeerId via targetRelayPeerId:
+        co HelloPeer.hello(%init_peer_id%)
+
+    -- send the result to the initiator
+    <- comp.reply    
+
+
+func fetchOpenSeaSize(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
+    -- execute computation on a Peer in the network
+    on HELLO_WORLD_NODE_PEER_ID:
+        MarketplaceService HELLO_WORLD_SERVICE_ID
+        comp <- MarketplaceService.opensea_fetch_len()
+
+    -- send the result to target browser in the background
+    on targetPeerId via targetRelayPeerId:
+        co HelloPeer.hello(%init_peer_id%)
+
+    -- send the result to the initiator
+    <- comp.reply 
+
+func fetchRarible(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
+    -- execute computation on a Peer in the network
+    on HELLO_WORLD_NODE_PEER_ID:
+        MarketplaceService HELLO_WORLD_SERVICE_ID
+        comp <- MarketplaceService.rarible_fetch()
+
+    -- send the result to target browser in the background
+    on targetPeerId via targetRelayPeerId:
+        co HelloPeer.hello(%init_peer_id%)
+
+    -- send the result to the initiator
+    <- comp.reply    
+
+
+func fetchRaribleSize(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
+    -- execute computation on a Peer in the network
+    on HELLO_WORLD_NODE_PEER_ID:
+        MarketplaceService HELLO_WORLD_SERVICE_ID
+        comp <- MarketplaceService.rarible_fetch_len()
+
+    -- send the result to target browser in the background
+    on targetPeerId via targetRelayPeerId:
+        co HelloPeer.hello(%init_peer_id%)
+
+    -- send the result to the initiator
+    <- comp.reply        
