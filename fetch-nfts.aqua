@@ -1,7 +1,7 @@
 import "@fluencelabs/aqua-lib/builtin.aqua"
 
-const HELLO_WORLD_NODE_PEER_ID ?= "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi"
-const HELLO_WORLD_SERVICE_ID ?= "5b902668-e9ef-4eb2-b53b-7d3b138321e1"
+const NFT_MARKETPLACE_NODE_PEER_ID ?= "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi"
+const NFT_MARKETPLACE_SERVICE_ID ?= "5b902668-e9ef-4eb2-b53b-7d3b138321e1"
 
 data NFTEcho:
   msg: string
@@ -21,8 +21,8 @@ service ClientPeer("ClientPeer"):
 
 func sayHello(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
     -- execute computation on a Peer in the network
-    on HELLO_WORLD_NODE_PEER_ID:
-        MarketplaceService HELLO_WORLD_SERVICE_ID
+    on NFT_MARKETPLACE_NODE_PEER_ID:
+        MarketplaceService NFT_MARKETPLACE_SERVICE_ID
         comp <- MarketplaceService.hello("With love")
 
     -- send the result to target browser in the background
@@ -35,8 +35,8 @@ func sayHello(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
 
 func fetchOpenSea(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
     -- execute computation on a Peer in the network
-    on HELLO_WORLD_NODE_PEER_ID:
-        MarketplaceService HELLO_WORLD_SERVICE_ID
+    on NFT_MARKETPLACE_NODE_PEER_ID:
+        MarketplaceService NFT_MARKETPLACE_SERVICE_ID
         comp <- MarketplaceService.opensea_fetch()
 
     -- send the result to target browser in the background
@@ -49,8 +49,8 @@ func fetchOpenSea(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
 
 func fetchOpenSeaSize(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
     -- execute computation on a Peer in the network
-    on HELLO_WORLD_NODE_PEER_ID:
-        MarketplaceService HELLO_WORLD_SERVICE_ID
+    on NFT_MARKETPLACE_NODE_PEER_ID:
+        MarketplaceService NFT_MARKETPLACE_SERVICE_ID
         comp <- MarketplaceService.opensea_fetch_len()
 
     -- send the result to target browser in the background
@@ -62,8 +62,8 @@ func fetchOpenSeaSize(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string
 
 func fetchRarible(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
     -- execute computation on a Peer in the network
-    on HELLO_WORLD_NODE_PEER_ID:
-        MarketplaceService HELLO_WORLD_SERVICE_ID
+    on NFT_MARKETPLACE_NODE_PEER_ID:
+        MarketplaceService NFT_MARKETPLACE_SERVICE_ID
         comp <- MarketplaceService.rarible_fetch()
 
     -- send the result to target browser in the background
@@ -76,8 +76,8 @@ func fetchRarible(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
 
 func fetchRaribleSize(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
     -- execute computation on a Peer in the network
-    on HELLO_WORLD_NODE_PEER_ID:
-        MarketplaceService HELLO_WORLD_SERVICE_ID
+    on NFT_MARKETPLACE_NODE_PEER_ID:
+        MarketplaceService NFT_MARKETPLACE_SERVICE_ID
         comp <- MarketplaceService.rarible_fetch_len()
 
     -- send the result to target browser in the background
@@ -86,6 +86,8 @@ func fetchRaribleSize(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string
 
     -- send the result to the initiator
     <- comp.reply        
+
+
 
 
 
