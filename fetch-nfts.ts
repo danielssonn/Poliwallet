@@ -16,6 +16,42 @@ import {
 
 // Services
 
+export interface ClientPeerDef {
+    hello: (message: string, callParams: CallParams<'message'>) => string | Promise<string>;
+}
+export function registerClientPeer(service: ClientPeerDef): void;
+export function registerClientPeer(serviceId: string, service: ClientPeerDef): void;
+export function registerClientPeer(peer: FluencePeer, service: ClientPeerDef): void;
+export function registerClientPeer(peer: FluencePeer, serviceId: string, service: ClientPeerDef): void;
+       
+
+export function registerClientPeer(...args: any) {
+    registerService(
+        args,
+        {
+    "defaultServiceId" : "ClientPeer",
+    "functions" : [
+        {
+            "functionName" : "hello",
+            "argDefs" : [
+                {
+                    "name" : "message",
+                    "argType" : {
+                        "tag" : "primitive"
+                    }
+                }
+            ],
+            "returnType" : {
+                "tag" : "primitive"
+            }
+        }
+    ]
+}
+    );
+}
+      
+
+
 export interface MarketplaceServiceDef {
     hello: (from: string, callParams: CallParams<'from'>) => { msg: string; reply: string; } | Promise<{ msg: string; reply: string; }>;
     opensea_fetch: (callParams: CallParams<null>) => { msg: string; reply: string; } | Promise<{ msg: string; reply: string; }>;
@@ -83,42 +119,6 @@ export function registerMarketplaceService(...args: any) {
     );
 }
       
-
-
-export interface HelloPeerDef {
-    hello: (message: string, callParams: CallParams<'message'>) => string | Promise<string>;
-}
-export function registerHelloPeer(service: HelloPeerDef): void;
-export function registerHelloPeer(serviceId: string, service: HelloPeerDef): void;
-export function registerHelloPeer(peer: FluencePeer, service: HelloPeerDef): void;
-export function registerHelloPeer(peer: FluencePeer, serviceId: string, service: HelloPeerDef): void;
-       
-
-export function registerHelloPeer(...args: any) {
-    registerService(
-        args,
-        {
-    "defaultServiceId" : "HelloPeer",
-    "functions" : [
-        {
-            "functionName" : "hello",
-            "argDefs" : [
-                {
-                    "name" : "message",
-                    "argType" : {
-                        "tag" : "primitive"
-                    }
-                }
-            ],
-            "returnType" : {
-                "tag" : "primitive"
-            }
-        }
-    ]
-}
-    );
-}
-      
 // Functions
  
 
@@ -154,7 +154,7 @@ export function fetchOpenSea(...args: any) {
                         )
                         (xor
                          (seq
-                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("b6c9d9b4-e2b9-4c22-8a1f-dd25b25797d0" "opensea_fetch") [] comp)
+                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("5b902668-e9ef-4eb2-b53b-7d3b138321e1" "opensea_fetch") [] comp)
                           (call targetRelayPeerId ("op" "noop") [])
                          )
                          (seq
@@ -173,7 +173,7 @@ export function fetchOpenSea(...args: any) {
                         (seq
                          (seq
                           (par
-                           (call targetPeerId ("HelloPeer" "hello") [%init_peer_id%])
+                           (call targetPeerId ("ClientPeer" "hello") [%init_peer_id%])
                            (null)
                           )
                           (call targetRelayPeerId ("op" "noop") [])
@@ -266,7 +266,7 @@ export function sayHello(...args: any) {
                         )
                         (xor
                          (seq
-                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("b6c9d9b4-e2b9-4c22-8a1f-dd25b25797d0" "hello") ["With love"] comp)
+                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("5b902668-e9ef-4eb2-b53b-7d3b138321e1" "hello") ["With love"] comp)
                           (call targetRelayPeerId ("op" "noop") [])
                          )
                          (seq
@@ -285,7 +285,7 @@ export function sayHello(...args: any) {
                         (seq
                          (seq
                           (par
-                           (call targetPeerId ("HelloPeer" "hello") [%init_peer_id%])
+                           (call targetPeerId ("ClientPeer" "hello") [%init_peer_id%])
                            (null)
                           )
                           (call targetRelayPeerId ("op" "noop") [])
@@ -378,7 +378,7 @@ export function fetchRarible(...args: any) {
                         )
                         (xor
                          (seq
-                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("b6c9d9b4-e2b9-4c22-8a1f-dd25b25797d0" "rarible_fetch") [] comp)
+                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("5b902668-e9ef-4eb2-b53b-7d3b138321e1" "rarible_fetch") [] comp)
                           (call targetRelayPeerId ("op" "noop") [])
                          )
                          (seq
@@ -397,7 +397,7 @@ export function fetchRarible(...args: any) {
                         (seq
                          (seq
                           (par
-                           (call targetPeerId ("HelloPeer" "hello") [%init_peer_id%])
+                           (call targetPeerId ("ClientPeer" "hello") [%init_peer_id%])
                            (null)
                           )
                           (call targetRelayPeerId ("op" "noop") [])
@@ -490,7 +490,7 @@ export function fetchRaribleSize(...args: any) {
                         )
                         (xor
                          (seq
-                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("b6c9d9b4-e2b9-4c22-8a1f-dd25b25797d0" "rarible_fetch_len") [] comp)
+                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("5b902668-e9ef-4eb2-b53b-7d3b138321e1" "rarible_fetch_len") [] comp)
                           (call targetRelayPeerId ("op" "noop") [])
                          )
                          (seq
@@ -509,7 +509,7 @@ export function fetchRaribleSize(...args: any) {
                         (seq
                          (seq
                           (par
-                           (call targetPeerId ("HelloPeer" "hello") [%init_peer_id%])
+                           (call targetPeerId ("ClientPeer" "hello") [%init_peer_id%])
                            (null)
                           )
                           (call targetRelayPeerId ("op" "noop") [])
@@ -602,7 +602,7 @@ export function fetchOpenSeaSize(...args: any) {
                         )
                         (xor
                          (seq
-                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("b6c9d9b4-e2b9-4c22-8a1f-dd25b25797d0" "opensea_fetch_len") [] comp)
+                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("5b902668-e9ef-4eb2-b53b-7d3b138321e1" "opensea_fetch_len") [] comp)
                           (call targetRelayPeerId ("op" "noop") [])
                          )
                          (seq
@@ -621,7 +621,7 @@ export function fetchOpenSeaSize(...args: any) {
                         (seq
                          (seq
                           (par
-                           (call targetPeerId ("HelloPeer" "hello") [%init_peer_id%])
+                           (call targetPeerId ("ClientPeer" "hello") [%init_peer_id%])
                            (null)
                           )
                           (call targetRelayPeerId ("op" "noop") [])
