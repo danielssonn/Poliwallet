@@ -16,7 +16,7 @@ service MarketplaceService:
 
 
 -- The service runs inside browser
-service HelloPeer("HelloPeer"):
+service ClientPeer("ClientPeer"):
     hello(message: string) -> string
 
 func sayHello(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
@@ -27,7 +27,7 @@ func sayHello(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
 
     -- send the result to target browser in the background
     on targetPeerId via targetRelayPeerId:
-        co HelloPeer.hello(%init_peer_id%)
+        co ClientPeer.hello(%init_peer_id%)
 
     -- send the result to the initiator
     <- comp.reply
@@ -41,7 +41,7 @@ func fetchOpenSea(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
 
     -- send the result to target browser in the background
     on targetPeerId via targetRelayPeerId:
-        co HelloPeer.hello(%init_peer_id%)
+        co ClientPeer.hello(%init_peer_id%)
 
     -- send the result to the initiator
     <- comp.reply    
@@ -55,7 +55,7 @@ func fetchOpenSeaSize(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string
 
     -- send the result to target browser in the background
     on targetPeerId via targetRelayPeerId:
-        co HelloPeer.hello(%init_peer_id%)
+        co ClientPeer.hello(%init_peer_id%)
 
     -- send the result to the initiator
     <- comp.reply 
@@ -68,7 +68,7 @@ func fetchRarible(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
 
     -- send the result to target browser in the background
     on targetPeerId via targetRelayPeerId:
-        co HelloPeer.hello(%init_peer_id%)
+        co ClientPeer.hello(%init_peer_id%)
 
     -- send the result to the initiator
     <- comp.reply    
@@ -82,9 +82,11 @@ func fetchRaribleSize(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string
 
     -- send the result to target browser in the background
     on targetPeerId via targetRelayPeerId:
-        co HelloPeer.hello(%init_peer_id%)
+        co ClientPeer.hello(%init_peer_id%)
 
     -- send the result to the initiator
     <- comp.reply        
+
+
 
 
