@@ -1,7 +1,7 @@
 import "@fluencelabs/aqua-lib/builtin.aqua"
 
 const HELLO_WORLD_NODE_PEER_ID ?= "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi"
-const HELLO_WORLD_SERVICE_ID ?= "b6c9d9b4-e2b9-4c22-8a1f-dd25b25797d0"
+const HELLO_WORLD_SERVICE_ID ?= "5b902668-e9ef-4eb2-b53b-7d3b138321e1"
 
 data NFTEcho:
   msg: string
@@ -86,3 +86,5 @@ func fetchRaribleSize(targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string
 
     -- send the result to the initiator
     <- comp.reply        
+
+
