@@ -6,27 +6,33 @@ Schelling Point Hackathon
 
 APIs exposed via the P2P network
 
-OpenSea [https://testnets-api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20](https://testnets-api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20)
+OpenSea [https://testnets-api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=3](https://testnets-api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=3)
 
-Rarible [http://api-dev.rarible.org/v0.1/items/all](http://api-dev.rarible.org/v0.1/items/all)
+Rarible [https://ethereum-api.rarible.org/v0.1/nft/items/all?size=5](https://ethereum-api.rarible.org/v0.1/nft/items/all?size=5)
 
 ## P2P node details
 
 
-client seed: BTFQNFpFZmUM7kkpBcX25nMey3j6zinBcdNfjswi9TTx
+```NFT_MARKETPLACE_NODE_PEER_ID ?= "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi"```
 
-client peerId: 12D3KooWGxkRC917P9UwszKUDiWpmj7vuoqWJ1yzRAFFfGsofxHL
 
-relay peerId: 12D3KooWSD5PToNiLQwKDXsu8JSysCwUt8BVUJEqCHcDe7P5h45e
+```NFT_MARKETPLACE_SERVICE_ID ?= "7f792f0b-8e9b-4b6d-90f7-bd6461e84d1d"```
 
-service id: 3cee2339-e8b3-4b26-b75c-14ee4d32976f
 
 
 
 ## Functions available on the P2P node
+```
+interface
+Loaded modules interface:
+data NFTEcho:
+  msg: string
+  reply: string
 
 marketplace-service:
-
-  fn rarible_fetch() -> string
-  
-  fn opensea_fetch() -> string
+  fn rarible_fetch_len() -> NFTEcho
+  fn opensea_fetch_len() -> NFTEcho
+  fn hello(from: string) -> NFTEcho
+  fn opensea_fetch() -> NFTEcho
+  fn rarible_fetch() -> NFTEcho
+  ```
