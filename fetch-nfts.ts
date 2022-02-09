@@ -154,7 +154,7 @@ export function fetchOpenSea(...args: any) {
                         )
                         (xor
                          (seq
-                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("5b902668-e9ef-4eb2-b53b-7d3b138321e1" "opensea_fetch") [] comp)
+                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("7f792f0b-8e9b-4b6d-90f7-bd6461e84d1d" "opensea_fetch") [] comp)
                           (call targetRelayPeerId ("op" "noop") [])
                          )
                          (seq
@@ -266,7 +266,7 @@ export function sayHello(...args: any) {
                         )
                         (xor
                          (seq
-                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("5b902668-e9ef-4eb2-b53b-7d3b138321e1" "hello") ["With love"] comp)
+                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("7f792f0b-8e9b-4b6d-90f7-bd6461e84d1d" "hello") ["With love"] comp)
                           (call targetRelayPeerId ("op" "noop") [])
                          )
                          (seq
@@ -378,7 +378,7 @@ export function fetchRarible(...args: any) {
                         )
                         (xor
                          (seq
-                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("5b902668-e9ef-4eb2-b53b-7d3b138321e1" "rarible_fetch") [] comp)
+                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("7f792f0b-8e9b-4b6d-90f7-bd6461e84d1d" "rarible_fetch") [] comp)
                           (call targetRelayPeerId ("op" "noop") [])
                          )
                          (seq
@@ -490,7 +490,7 @@ export function fetchRaribleSize(...args: any) {
                         )
                         (xor
                          (seq
-                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("5b902668-e9ef-4eb2-b53b-7d3b138321e1" "rarible_fetch_len") [] comp)
+                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("7f792f0b-8e9b-4b6d-90f7-bd6461e84d1d" "rarible_fetch_len") [] comp)
                           (call targetRelayPeerId ("op" "noop") [])
                          )
                          (seq
@@ -602,7 +602,7 @@ export function fetchOpenSeaSize(...args: any) {
                         )
                         (xor
                          (seq
-                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("5b902668-e9ef-4eb2-b53b-7d3b138321e1" "opensea_fetch_len") [] comp)
+                          (call "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi" ("7f792f0b-8e9b-4b6d-90f7-bd6461e84d1d" "opensea_fetch_len") [] comp)
                           (call targetRelayPeerId ("op" "noop") [])
                          )
                          (seq
