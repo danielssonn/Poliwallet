@@ -21,7 +21,12 @@ const textFieldFillColor = Color(0xFFF7F9FF);
 
 const hintColor = Color(0xFF8E8E8E);
 
+const dividerColor = Color(0xFFC4C4C4);
+
 const avatarColor = Color(0xFFF7F9FF);
+
+const surfaceColor = Color(0xFFF7F9FF);
+const subTextColor = Color(0xFF525252);
 // Text controls#
 
 const textHeaderStyle = TextStyle(

@@ -3,7 +3,11 @@
 /// Remarks      : Widget for the home app bar
 
 import 'package:flutter/material.dart';
+import 'package:poliwallet/ui/pages/accounts/accounts_screen.dart';
+import 'package:poliwallet/ui/pages/addnewitem_screen.dart';
+import 'package:poliwallet/ui/pages/addtrade_screen.dart';
 import 'package:poliwallet/utils/constants.dart';
+import 'package:poliwallet/ui/shared/widgets/animated_route.dart';
 
 class homeAppBar extends StatelessWidget {
   const homeAppBar({
@@ -18,11 +22,20 @@ class homeAppBar extends StatelessWidget {
         color: Colors.white,
       ),
       title: Center(
-        child: new Text(
-          'Account 1',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.w700),
+        child: GestureDetector(
+          onTap: () {
+            print('Account is pressed');
+            Navigator.of(context).push(createRoute(AccountSettingsScreen()));
+            // _offsetPopup();
+          },
+          child: new Text(
+            'Account 1',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700),
+          ),
         ),
       ),
       elevation: 0.0,
@@ -50,7 +63,7 @@ class homeAppBar extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: new Padding(
-                  padding: const EdgeInsets.all(25),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -103,9 +116,6 @@ class homeAppBar extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 15.0,
-                      ),
                       Row(
                         children: <Widget>[
                           Expanded(
@@ -118,7 +128,10 @@ class homeAppBar extends StatelessWidget {
                                   style: TextStyle(
                                     color: primaryTextColor,
                                   )),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .push(createRoute(AddNewItemScreen()));
+                              },
                               style: ElevatedButton.styleFrom(
                                   elevation: 0.0,
                                   primary: Colors.white,
@@ -141,7 +154,10 @@ class homeAppBar extends StatelessWidget {
                                   style: TextStyle(
                                     color: primaryTextColor,
                                   )),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .push(createRoute(AddNewTradeScreen()));
+                              },
                               style: ElevatedButton.styleFrom(
                                   elevation: 0.0,
                                   primary: Colors.white,
@@ -161,46 +177,37 @@ class homeAppBar extends StatelessWidget {
           ),
         ),
       ),
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(30.0),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25), topRight: Radius.circular(25)),
-            color: const Color(0xFF4EAAFF),
-          ),
-          child: TabBar(
-              indicatorColor: primaryTextColor,
-              labelColor: primaryTextColor,
-              unselectedLabelColor: const Color(0xFFF6F9FF),
-              indicatorSize: TabBarIndicatorSize.label,
-              indicator: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25)),
-                color: const Color(0xFFF6F9FF),
-              ),
-              labelPadding: EdgeInsets.symmetric(horizontal: 0.0),
-              tabs: [
-                Tab(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Collections",
-                    ),
-                  ),
-                ),
-                Tab(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Certificates",
-                    ),
-                  ),
-                ),
-              ]),
-        ),
-      ),
     );
   }
+
+  Widget _offsetPopup() => PopupMenuButton<int>(
+      itemBuilder: (context) => [
+            PopupMenuItem(
+              value: 1,
+              child: Text(
+                "Flutter Open",
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
+              ),
+            ),
+            PopupMenuItem(
+              value: 2,
+              child: Text(
+                "Flutter Tutorial",
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
+              ),
+            ),
+          ],
+      icon: Container(
+        height: 300.0,
+        width: double.infinity,
+        decoration: ShapeDecoration(
+            color: Colors.blue,
+            shape: StadiumBorder(
+              side: BorderSide(color: Colors.white, width: 2),
+            )),
+        child: Icon(Icons.menu,
+            color: Colors.white), // <-- You can give your icon here
+      ));
 }

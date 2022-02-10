@@ -8,7 +8,7 @@ part of 'os_collections.dart';
 
 OS_Collections _$OS_CollectionsFromJson(Map<String, dynamic> json) {
   return OS_Collections(
-    name: json['name'] as String,
+    name: json['name'] as String?,
     description: json['description'] as String?,
     slug: json['slug'] as String?,
     created_date: json['created_date'] as String?,

@@ -3,14 +3,19 @@
 /// Remarks      : Main file for Poliwallet
 
 import 'package:flutter/material.dart';
-import 'package:poliwallet/ui/pages/createwalletconfirm_screen.dart';
-import 'package:poliwallet/ui/pages/createwalletsp_screen.dart';
 import 'package:poliwallet/ui/pages/home_screen.dart';
 import 'package:poliwallet/ui/pages/connectwallet_screen.dart';
 
-import 'ui/pages/createwalletns_screen.dart';
-import 'ui/pages/importwalletns_screen.dart';
-import 'ui/pages/importwalletsp_screen.dart';
+import 'ui/pages/addnewitem_screen.dart';
+import 'ui/pages/addtrade_screen.dart';
+import 'ui/pages/coins_screen.dart';
+import 'ui/pages/collections/collectiondetails_screen.dart';
+import 'ui/pages/onboarding/create_wallet/createwalletconfirm_screen.dart';
+import 'ui/pages/onboarding/create_wallet/createwalletns_screen.dart';
+import 'ui/pages/onboarding/create_wallet/createwalletsp_screen.dart';
+import 'ui/pages/onboarding/import_wallet/importwalletns_screen.dart';
+import 'ui/pages/onboarding/import_wallet/importwalletsp_screen.dart';
+import 'ui/pages/send/transfernft_screen.dart';
 
 void main() => runApp(PoliWalletApp());
 
@@ -37,9 +42,10 @@ class PoliWalletApp extends StatelessWidget {
         // Define the default font family.
         fontFamily: 'Karla',
       ),
-      home: ConnectWalletScreen(),
+      home: HomeScreen(), //ConnectWalletScreen(),
       debugShowCheckedModeBanner: false,
-      initialRoute: ConnectWalletScreen.id,
+      initialRoute:
+          ConnectWalletScreen.id, //ConnectWalletScreen.id, //HomeScreen.id, //
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
         ConnectWalletScreen.id: (context) => ConnectWalletScreen(),
@@ -48,6 +54,10 @@ class PoliWalletApp extends StatelessWidget {
         CreateWalletSPScreen.id: (context) => CreateWalletSPScreen(),
         CreateWalletConfirmScreen.id: (context) => CreateWalletConfirmScreen(),
         CreateWalletNSScreen.id: (context) => CreateWalletNSScreen(),
+        AddNewItemScreen.id: (context) => AddNewItemScreen(),
+        AddNewTradeScreen.id: (context) => AddNewTradeScreen(),
+        CoinsScreen.id: (context) => CoinsScreen(),
+        CollectionItemScreen.id: (context) => CollectionItemScreen(),
       },
     );
   }
