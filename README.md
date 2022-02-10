@@ -9,8 +9,6 @@ How is the wallet special? We believe the utility aspect of NFTs is the next bes
 
 This is only the beginning for Poliwallet. We want to build more P2P features enabling direct trade without any intermediaries. Pokemon cards, anyone? Another feature set will be focused on using the NFTs. For example, checking-in with your NFT ticket, unlocking a door or cashing out that reward with your POAP.  All directly from your wallet, in elegant and straight forward user experience.
 
-This is the Polliwallet, your easy-to-use and secured all-in-one NFT wallet.
-
 ## Mobile App
 **mobile_app**
 
