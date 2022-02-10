@@ -3,7 +3,7 @@ In recent months NFTs have exploded like a gigantic bomb and the numbers skyrock
 
 With the rise in the NFT market, there’s also a demand for NFT wallets too. With all of these nft marketplaces around, Would it be nice to have a wallet that allows you to manage your crypto assets under one roof? Today, I present the Poliwallet - Easy to use All-in-one NFT wallet.
 
-How is the wallet special? We believe the utility aspect of NFTs is the next best thing. We think that **trading** Apes is cool, but **using** your NFTs is even cooler.  So we make your POAPs or NFT Smart Keys a first class citizen in your wallet, creating a new experience to actually use your NFTs.
+How is the wallet special? We believe the utility aspect of NFTs is the next best thing. We think that **trading** Apes is cool, but **using** your NFTs is even cooler.  So we make your POAPs or NFT Smart Keys first class citizens in your wallet, creating a new experience to actually **use** your NFTs.
 
 ## Next steps
 
