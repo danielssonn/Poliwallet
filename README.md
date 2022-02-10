@@ -45,3 +45,8 @@ service MarketplaceService:
   opensea_fetch(page: i32, page_size: i32) -> NFTEcho
   rarible_fetch(continuation: string, size: i32) -> NFTEcho
   ```
+
+
+## User Interface and User Experience
+
+[Poliwallet UI and UX](https://docs.google.com/document/d/1fhbRTznWy5MVBDgkHw2CRRgtloFHI6Aq4-kYOTk1VpI/edit?usp=sharing)
