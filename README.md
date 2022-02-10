@@ -23,16 +23,11 @@ Rarible [https://ethereum-api.rarible.org/v0.1/nft/items/all?size=5](https://eth
 
 ## Functions available on the P2P node
 ```
-interface
-Loaded modules interface:
 data NFTEcho:
   msg: string
   reply: string
 
-marketplace-service:
-  fn rarible_fetch_len() -> NFTEcho
-  fn opensea_fetch_len() -> NFTEcho
-  fn hello(from: string) -> NFTEcho
-  fn opensea_fetch() -> NFTEcho
-  fn rarible_fetch() -> NFTEcho
+service MarketplaceService:
+  opensea_fetch(page: i32, page_size: i32) -> NFTEcho
+  rarible_fetch(continuation: string, size: i32) -> NFTEcho
   ```
