@@ -1,0 +1,50 @@
+import "@fluencelabs/aqua-lib/builtin.aqua"
+
+const NFT_MARKETPLACE_NODE_PEER_ID ?= "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi"
+const NFT_MARKETPLACE_SERVICE_ID ?= "4423f13c-ea6c-4012-894d-8bed346bdf40"
+
+data NFTEcho:
+  msg: string
+  reply: string
+
+service MarketplaceService:
+  opensea_fetch(page: i32, page_size: i32) -> NFTEcho
+  rarible_fetch(continuation: string, size: i32) -> NFTEcho
+
+
+-- The service runs inside browser
+service ClientPeer("ClientPeer"):
+    hello(message: string) -> string
+
+
+func fetchOpenSea(targetPeerId: PeerId, targetRelayPeerId: PeerId, page: i32, page_size: i32) -> string:
+    -- execute computation on a Peer in the network
+    on NFT_MARKETPLACE_NODE_PEER_ID:
+        MarketplaceService NFT_MARKETPLACE_SERVICE_ID
+        comp <- MarketplaceService.opensea_fetch(page, page_size)
+
+    -- send the result to target browser in the background
+    on targetPeerId via targetRelayPeerId:
+        co ClientPeer.hello(%init_peer_id%)
+
+    -- send the result to the initiator
+    <- comp.reply    
+
+
+
+func fetchRarible(targetPeerId: PeerId, targetRelayPeerId: PeerId, continuation: string, size: i32) -> string:
+    -- execute computation on a Peer in the network
+    on NFT_MARKETPLACE_NODE_PEER_ID:
+        MarketplaceService NFT_MARKETPLACE_SERVICE_ID
+        comp <- MarketplaceService.rarible_fetch(continuation, size)
+
+    -- send the result to target browser in the background
+    on targetPeerId via targetRelayPeerId:
+        co ClientPeer.hello(%init_peer_id%)
+
+    -- send the result to the initiator
+    <- comp.reply    
+
+
+
+
