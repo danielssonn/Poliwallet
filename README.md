@@ -1,4 +1,4 @@
-# SchellingPoint2022
+# Poliwallet - NFT wallet on Fluence P2P network
 In recent months NFTs have exploded like a gigantic bomb and the numbers skyrocketed insanely. Whatever the concept and the medium used, NFT is growing like a craze and rising.
 
 With the rise in the NFT market, there’s also a demand for NFT wallets too. With all of these nft marketplaces around, Would it be nice to have a wallet that allows you to manage your crypto assets under one roof? Today, I present the Poliwallet - Easy to use All-in-one NFT wallet.
