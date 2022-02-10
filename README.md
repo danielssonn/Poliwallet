@@ -18,6 +18,11 @@ We chose to implement the wallet as mobile-first solution, implementing applicat
 
 [Fluence P2P Network](fluence.network) is used to access popular NFT MarketPlaces. This provides a level of abstraction and disentermediation from centralized market place providers. In the future, we plan to add more features and user experiences benefiting from P2P.
 
+**service**
+Fluence node service wrapping up curl adapter to access NFT marketplaces
+**client**
+Aqua and TS interfaces to call the service, leveraged by the mobile app
+
 APIs exposed via the P2P network
 
 OpenSea [https://testnets-api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=3](https://testnets-api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=3)
