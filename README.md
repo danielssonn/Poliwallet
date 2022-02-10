@@ -20,6 +20,7 @@ We chose to implement the wallet as mobile-first solution, implementing applicat
 
 **service**
 Fluence node service wrapping up curl adapter to access NFT marketplaces
+
 **client**
 Aqua and TS interfaces to call the service, leveraged by the mobile app
 
