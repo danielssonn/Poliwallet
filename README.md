@@ -14,7 +14,7 @@ This is the Polliwallet, your easy-to-use and secured all-in-one NFT wallet.
 ## Mobile App
 We chose to implement the wallet as mobile-first solution, implementing application for iOS and Android in Flutter, Fluthereum and  WalletConnect.
 
-## Fluence P2P setup
+## Fluence P2P
 
 [Fluence P2P Network](fluence.network) is used to access popular NFT MarketPlaces. This provides a level of abstraction and disentermediation from centralized market place providers. In the future, we plan to add more features and user experiences benefiting from P2P.
 
