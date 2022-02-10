@@ -1,0 +1,24 @@
+{
+    "conf": {
+        "name": "marketplace-service",
+        "modules": [
+            {
+                "name": "api-adapter",
+                "path": "./artifacts/marketplace-service.wasm",
+                "mounted_binaries": [
+                    [
+                        [
+                            "curl",
+                            "/usr/bin/curl"
+                        ]
+                    ]
+                ],
+                "mapped_dirs": [],
+                "preopened_files": [],
+                "logger_enabled": [
+                    true
+                ]
+            }
+        ]
+    }
+}
