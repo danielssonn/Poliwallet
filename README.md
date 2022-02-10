@@ -12,6 +12,7 @@ This is only the beginning for Poliwallet. We want to build more P2P features en
 This is the Polliwallet, your easy-to-use and secured all-in-one NFT wallet.
 
 ## Mobile App
+We chose to implement the wallet as mobile-first solution, implementing application for iOS and Android in Flutter, Fluthereum and  WalletConnect.
 
 ## Fluence P2P setup
 
