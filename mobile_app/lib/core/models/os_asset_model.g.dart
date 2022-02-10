@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'os_asset_model.dart';
+part of 'rarible_collection_list.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

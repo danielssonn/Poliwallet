@@ -2,9 +2,13 @@
 /// Date Created : 2/1/21
 /// Remarks      : Poliwallet homescreen
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:poliwallet/core/models/os_collections.dart';
 import 'package:poliwallet/core/services/opensea_svc.dart';
+import 'package:poliwallet/ui/pages/loadcollection_screen.dart';
+import 'package:poliwallet/ui/shared/widgets/animated_route.dart';
 import 'package:poliwallet/ui/shared/widgets/collection_card.dart';
 import 'package:poliwallet/ui/shared/widgets/home_appbar.dart';
 import 'package:poliwallet/ui/shared/widgets/poap_badge.dart';
@@ -51,65 +55,135 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  final _pageOptions = [nft_assets_page(), coins_page()];
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: new Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(270.0),
-          child: homeAppBar(),
-        ),
-        body: SafeArea(
-          child: TabBarView(
-            children: [
-              collections_tab(),
-              certificates_tab(),
-            ],
-          ),
-        ),
-        floatingActionButton: new FloatingActionButton(
-          backgroundColor: iconBackgroundColor,
-          onPressed: () {},
-          child: new Icon(
-            Icons.store,
-            color: Colors.white,
-          ),
-          elevation: 4.0,
-        ),
-        bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black38, spreadRadius: 0, blurRadius: 0.25),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                topRight: Radius.circular(30.0)),
-            child: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              elevation: 0,
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.collections),
-                  label: 'NFT Assets',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.money),
-                  label: 'Coins',
-                ),
-              ],
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-            ),
-          ),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    return new Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(190.0),
+        child: homeAppBar(),
       ),
+      body: _pageOptions[_selectedIndex],
+      floatingActionButton: new FloatingActionButton(
+        backgroundColor: iconBackgroundColor,
+        onPressed: () {
+          Navigator.of(context).push(createRoute(LoadCollectionScreen()));
+        },
+        child: new Icon(
+          Icons.store,
+          color: Colors.white,
+        ),
+        elevation: 4.0,
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+          boxShadow: [
+            BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 0.25),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            elevation: 0,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.collections_outlined),
+                label: 'NFT Assets',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.money),
+                label: 'Coins',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+}
+
+/// NFT Assets Page
+class nft_assets_page extends StatelessWidget {
+  const nft_assets_page({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            DefaultTabController(
+                length: 2, // length of tabs
+                initialIndex: 0,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xFF2D83E8),
+                        ),
+                        child: TabBar(
+                          labelPadding: EdgeInsets.symmetric(horizontal: 0.0),
+                          indicatorColor: primaryTextColor,
+                          labelColor: primaryTextColor,
+                          unselectedLabelColor: const Color(0xFFF6F9FF),
+                          indicatorSize: TabBarIndicatorSize.label,
+                          indicator: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(25),
+                                topRight: Radius.circular(25)),
+                            color: const Color(0xFFF6F9FF),
+                          ),
+                          tabs: [
+                            Tab(
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Badges",
+                                ),
+                              ),
+                            ),
+                            Tab(
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Collections",
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                          height: 480, //height of TabBarView
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  top: BorderSide(
+                                      color: Colors.grey, width: 0.5))),
+                          child: TabBarView(children: <Widget>[
+                            Container(
+                              child: Center(
+                                child: certificates_tab(),
+                              ),
+                            ),
+                            Container(
+                              child: Center(
+                                child: collections_tab(),
+                              ),
+                            ),
+                          ]))
+                    ])),
+          ]),
     );
   }
 }
@@ -121,7 +195,7 @@ class certificates_tab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       padding: EdgeInsets.all(15.0),
       child: Column(
         children: <Widget>[
@@ -132,7 +206,7 @@ class certificates_tab extends StatelessWidget {
               width: 120,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.asset('assets/collections/profile-photo.png')),
+                  child: Image.asset('assets/common/profile-photo.png')),
             ),
           ),
           SizedBox(
@@ -195,20 +269,32 @@ class certificates_tab extends StatelessWidget {
                                 decoration: new BoxDecoration(
                                   color: lightBlueColor,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    poap_badge(
-                                      img_url: 'assets/badges/poap-1.png',
-                                    ),
-                                    poap_badge(
-                                      img_url: 'assets/badges/poap-2.png',
-                                    ),
-                                    poap_badge(
-                                      img_url: 'assets/badges/poap-3.png',
-                                    ),
-                                  ],
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          poap_badge(
+                                            img_url:
+                                                'assets/collections/poap-1.png',
+                                          ),
+                                          poap_badge(
+                                            img_url:
+                                                'assets/collections/poap-2.png',
+                                          ),
+                                          poap_badge(
+                                            img_url:
+                                                'assets/collections/poap-3.png',
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Container(
@@ -237,25 +323,30 @@ class certificates_tab extends StatelessWidget {
   }
 }
 
-class collections_tab extends StatelessWidget {
+class collections_tab extends StatefulWidget {
   const collections_tab({
     Key? key,
   }) : super(key: key);
 
+  @override
+  collections_tabState createState() => collections_tabState();
+}
+
+class collections_tabState extends State<collections_tab> {
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         collection_card(
             index: 1,
-            collectionName: "Axie Infinity",
-            collectionThumbnail: "assets/collections/collections-1.png",
-            items: 6),
-        collection_card(
-            index: 2,
             collectionName: "CryptoPunks",
             collectionThumbnail: "assets/collections/collections-2.png",
             items: 2),
+        collection_card(
+            index: 2,
+            collectionName: "Axie Infinity",
+            collectionThumbnail: "assets/collections/collections-1.png",
+            items: 6),
         collection_card(
             index: 3,
             collectionName: "CryptoKitties",
@@ -277,6 +368,65 @@ class collections_tab extends StatelessWidget {
             collectionThumbnail: "assets/collections/collections-6.png",
             items: 1),
       ],
+    );
+  }
+}
+
+///Coins page
+class coins_page extends StatelessWidget {
+  const coins_page({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: FutureBuilder(
+              future: DefaultAssetBundle.of(context)
+                  .loadString('assets/data/coins.json'),
+              builder: (context, snapshot) {
+                // Decode the JSON
+                var newData = json.decode(snapshot.data.toString());
+                return ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      child: ListTile(
+                        leading: Container(
+                            constraints: const BoxConstraints(
+                                minWidth: 70.0, maxWidth: 80),
+                            height: double.infinity,
+                            child: Image.asset(newData[index]['icon'])),
+                        title: Text(newData[index]['title']),
+                        subtitle: Text(newData[index]['protocol']),
+                        trailing: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                newData[index]['value-coins'],
+                                textAlign: TextAlign.right,
+                              ),
+                              Text("USD " + newData[index]['value-usd'],
+                                  textAlign: TextAlign.right)
+                            ]),
+                        onTap: () {
+                          //   Navigator.of(context).pushNamed("your_route_name");
+                          print(newData[index]['title']);
+                        },
+                      ),
+                    );
+                  },
+                  itemCount: newData == null ? 0 : newData.length,
+                );
+              },
+            ),
+          ),
+          Image.asset('assets/watermark.png'),
+        ],
+      ),
     );
   }
 }

@@ -1,0 +1,23 @@
+[
+    {
+    "title":"Ethereum",
+    "protocol":"ERC-20",
+    "value-coins": "10 ETH",
+    "value-usd": "21,880.70",
+      "icon": "assets/common/eth-ico.png"
+    },
+    {
+    "title":"Polygon",
+    "protocol":"ERC-20",
+    "value-coins": "0 Matic",
+    "value-usd": "0",
+    "icon": "assets/common/matic-ico.png"
+    },
+    {
+    "title":"USD Coin",
+    "protocol":"ERC-20",
+    "value-coins": "0 USDC",
+    "value-usd": "0",
+    "icon": "assets/common/usdc-ico.png"
+    }
+  ]

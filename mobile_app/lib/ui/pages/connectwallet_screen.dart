@@ -3,11 +3,12 @@
 /// Remarks      : Screen that allows you to connect/create a wallet
 
 import 'package:flutter/material.dart';
-import 'package:poliwallet/ui/pages/createwalletsp_screen.dart';
-import 'package:poliwallet/ui/pages/importwalletsp_screen.dart';
 import 'package:poliwallet/ui/shared/widgets/button_outlined.dart';
 import 'package:poliwallet/ui/shared/widgets/button_solid.dart';
 import 'package:poliwallet/utils/constants.dart';
+
+import 'onboarding/create_wallet/createwalletsp_screen.dart';
+import 'onboarding/import_wallet/importwalletsp_screen.dart';
 
 class ConnectWalletScreen extends StatefulWidget {
   static final String id = 'connectWalletScreen';
@@ -45,7 +46,7 @@ class _ConnectWalletScreenState extends State<ConnectWalletScreen> {
                 padding: const EdgeInsets.all(25),
                 child: Column(
                   children: <Widget>[
-                    Expanded(child: Image.asset('assets/logo.png')),
+                    Expanded(child: Image.asset('assets/logo-v2.png')),
                     ButtonSolid(
                       btn_title: 'Import existing wallet',
                       onPress: () {
@@ -56,6 +57,7 @@ class _ConnectWalletScreenState extends State<ConnectWalletScreen> {
                       height: 20.0,
                     ),
                     ButtonOutlined(
+                      color: secondaryColor,
                       btn_title: 'Create new wallet',
                       onPress: () {
                         Navigator.pushNamed(context, CreateWalletSPScreen.id);

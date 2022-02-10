@@ -3,9 +3,10 @@
 /// Remarks      : Screen that allows you to import your wallet, user must enter the correct seed phrase
 
 import 'package:flutter/material.dart';
-import 'package:poliwallet/ui/pages/createwalletns_screen.dart';
 import 'package:poliwallet/ui/shared/widgets/button_solid.dart';
 import 'package:poliwallet/utils/constants.dart';
+
+import 'createwalletns_screen.dart';
 
 class CreateWalletConfirmScreen extends StatefulWidget {
   static final String id = 'createWalletConfirmSPScreen';

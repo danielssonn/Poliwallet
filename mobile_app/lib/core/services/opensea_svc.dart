@@ -11,15 +11,15 @@ const url =
 class OsAssetModel {
   Future<dynamic> getAssetList() async {
     final response = await http.get(
-      Uri.parse(
-          'https://testnets-api.opensea.io/api/v1/assets?order_by=sale_date&order_direction=desc&offset=0&limit=30'),
+      Uri.parse('http://localhost:3000/opensea'),
+
       // Send authorization headers to the backend.
+      //Fetch data from  https://testnets-api.opensea.io/api/v1/collections?offset=0&limit=10
       headers: {
         'User-Agent':
             'Mozilla/5.0 (X11; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0',
         'X-Requested-With': 'XMLHttpRequest',
-        'Referer':
-            'https://testnets-api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20',
+        'Referer': 'http://localhost:3000/opensea',
       },
     );
 
@@ -33,15 +33,14 @@ class OsAssetModel {
 class OsCollectionsModel {
   Future<dynamic> getCollectionList(String product) async {
     final response = await http.get(
-      Uri.parse(
-          'https://testnets-api.opensea.io/api/v1/collections?offset=0&limit=1'),
+      Uri.parse('http://localhost:3000/opeansea'),
       // Send authorization headers to the backend.
+      //Fetch data from  https://testnets-api.opensea.io/api/v1/collections?offset=0&limit=10
       headers: {
         'User-Agent':
             'Mozilla/5.0 (X11; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0',
         'X-Requested-With': 'XMLHttpRequest',
-        'Referer':
-            'https://testnets-api.opensea.io/api/v1/collections?offset=0&limit=1',
+        'Referer': 'http://localhost:3000/opensea',
       },
     );
 
@@ -54,14 +53,14 @@ class OsCollectionsModel {
   static Future<List<OS_Collections>> getCollections() async {
     final response = await http.get(
       Uri.parse(
-          'https://testnets-api.opensea.io/api/v1/collections?offset=0&limit=30"'),
+          'https://testnets-api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=8'),
       // Send authorization headers to the backend.
       headers: {
         'User-Agent':
             'Mozilla/5.0 (X11; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0',
         'X-Requested-With': 'XMLHttpRequest',
         'Referer':
-            'https://testnets-api.opensea.io/api/v1/collections?offset=0&limit=30"',
+            'https://testnets-api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=8',
       },
     );
 
