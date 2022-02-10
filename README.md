@@ -1,8 +1,21 @@
 # SchellingPoint2022
-Schelling Point Hackathon 
+In recent months NFTs have exploded like a gigantic bomb and the numbers skyrocketed insanely. Whatever the concept and the medium used, NFT is growing like a craze and rising.
 
+With the rise in the NFT market, there’s also a demand for NFT wallets too. With all of these nft marketplaces around, Would it be nice to have a wallet that allows you to manage your crypto assets under one roof? Today, I present the Poliwallet - Easy to use All-in-one NFT wallet.
+
+How is the wallet special? We believe the utility aspect of NFTs is the next best thing. We think that **trading** Apes is cool, but **using** your NFTs is even cooler.  So we make your POAPs or NFT Smart Keys a first class citizen in your wallet, creating a new experience to actually use your NFTs.
+
+## Next steps
+
+This is only the beginning for Poliwallet. We want to build more P2P features enabling direct trade without any intermediaries. Pokemon cards, anyone? Another feature set will be focused on using the NFTs. For example, checking-in with your NFT ticket, unlocking a door or cashing out that reward with your POAP.  All directly from your wallet, in elegant and straight forward user experience.
+
+This is the Polliwallet, your easy-to-use and secured all-in-one NFT wallet.
+
+## Mobile App
 
 ## Fluence P2P setup
+
+[Fluence P2P Network](fluence.network) is used to access popular NFT MarketPlaces. This provides a level of abstraction and disentermediation from centralized market place providers. In the future, we plan to add more features and user experiences benefiting from P2P.
 
 APIs exposed via the P2P network
 
